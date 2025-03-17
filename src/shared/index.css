@@ -1,0 +1,37 @@
+:root {
+  --Purple-900: #400799;
+  --Purple-800: #5509cc;
+  --Purple-700: #6a0bff;
+  --Purple-600: #883cff;
+  --Purple-500: #a66dff;
+  --Purple-400: #c39dff;
+  --Purple-300: #d2b6ff;
+  --Purple-200: #e1ceff;
+  --Purple-100: #f0e7ff;
+
+  --Black-900: #191919;
+  --Black-800: #303030;
+  --Black-700: #474747;
+  --Black-600: #5e5e5e;
+  --Black-500: #757575;
+  --Black-400: #8c8c8c;
+  --Black-300: #a3a3a3;
+  --Black-200: #bababa;
+  --Black-100: #d1d1d1;
+  --Black-50: #e8e8e8;
+  --Black-25: #f4f4f4;
+
+  --White-900: #fff;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: var(--Black-25);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}

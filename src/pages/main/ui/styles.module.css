@@ -1,0 +1,6 @@
+.main__inner {
+  display: flex;
+  padding: 40px 0;
+  gap: 20px;
+  align-items: start;
+}

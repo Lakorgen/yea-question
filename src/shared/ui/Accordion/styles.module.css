@@ -1,0 +1,68 @@
+.accordion {
+  overflow: hidden;
+  width: 100%;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--Purple-700);
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header {
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--White-900);
+  color: var(--Black-900);
+  font-feature-settings: "ss01" on, "cv01" on, "cv11" on;
+  font-family: Manrope;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  padding-bottom: 16px;
+
+  & span {
+    color: var(--Purple-700);
+  }
+}
+
+.body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease; /* Анимация max-height и padding */
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-bottom: 1px solid var(--Black-100);
+  gap: 24px;
+}
+
+.open {
+  max-height: 1000px; /* Это значение должно быть достаточно большим, чтобы вместить весь контент */
+  padding-top: 16px; /* Добавляем плавный отступ */
+  padding-bottom: 16px;
+}
+
+.arrowUp,
+.arrowDown {
+  transition: transform 0.2s ease;
+}
+
+.arrowUp {
+  transform: rotate(-180deg);
+}
