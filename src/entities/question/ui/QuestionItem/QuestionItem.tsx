@@ -24,7 +24,7 @@ const QuestionItem = ({ question }: Props) => {
           className={styles.answer}
           dangerouslySetInnerHTML={{ __html: question.shortAnswer }}
         />
-        <Link to="/" className={styles.more}>
+        <Link to={`/question/${question.id}`} className={styles.more}>
           Подробнее
           <ArrowRightSvg />
         </Link>

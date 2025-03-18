@@ -12,7 +12,7 @@ const FiltersList = () => {
     data: skills,
     isLoading: skillsIsLoading,
     isError: skillsIsError,
-  } = useGetSkillsQuery({ page: 1, specializiationsId: 40 });
+  } = useGetSkillsQuery({ specializations: 11 });
 
   if (isLoading || skillsIsLoading) return <div>Loading...</div>;
   if (isError || skillsIsError) return <div>Error...</div>;

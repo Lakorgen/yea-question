@@ -20,5 +20,5 @@ export interface ISkillsResponse {
 export interface ParamsType {
   page?: number;
   limit?: number;
-  specializiationsId: number;
+  specializations: number;
 }

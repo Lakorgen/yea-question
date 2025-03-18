@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IQuestionResponse, ParamsType } from "../model/types";
-
+import { IQuestion, IQuestionResponse, ParamsType } from "../model/types";
 
 const BASE_URL = import.meta.env.VITE_YEAHUB_BASE_URL;
 
@@ -19,7 +18,14 @@ export const questionApi = createApi({
         };
       },
     }),
+    getQuestionById: builder.query<IQuestion, number | string>({
+      query: (id) => {
+        return {
+          url: `/questions/public-questions/${id}`,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetQuestionQuery } = questionApi;
+export const { useGetQuestionQuery, useGetQuestionByIdQuery } = questionApi;

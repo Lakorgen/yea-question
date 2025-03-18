@@ -11,10 +11,10 @@ export const skillsApi = createApi({
   endpoints: (builder) => ({
     getSkills: builder.query<ISkillsResponse, ParamsType>({
       query: (params) => {
-        const { page = 1, limit = 50, specializiationsId = 1 } = params || {};
+        const { page = 1, limit = 50, specializations = 1 } = params || {};
         return {
           url: "skills",
-          params: { page, limit, specializiationsId },
+          params: { page, limit, specializations },
         };
       },
     }),
