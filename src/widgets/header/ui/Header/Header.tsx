@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import styles from "./styles.module.css";
 import LogoIcon from "@/shared/assets/LogoIcon";
+import NavLinks from "./NavLinks";
+import AuthButtons from "./AuthButtons";
 const Header = () => {
   return (
     <header className={styles.header}>
@@ -10,21 +12,9 @@ const Header = () => {
             <Link to="/">
               <LogoIcon />
             </Link>
-            <nav className={styles.nav}>
-              <ul className={styles.nav__list}>
-                <li className={styles.nav__item}>
-                  <Link to="/">База вопросов</Link>
-                </li>
-                <li className={styles.nav__item}>
-                  <Link to="/">Тренажер</Link>
-                </li>
-              </ul>
-            </nav>
+            <NavLinks />
           </div>
-          <div className={styles.auth}>
-            <button>Войти</button>
-            <button>Регистрация</button>
-          </div>
+          <AuthButtons />
         </div>
       </div>
     </header>

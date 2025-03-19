@@ -59,7 +59,6 @@ const FiltersList = () => {
     }
   }, [keywords, specialization, skills, complexity, rate, setSearchParams]);
 
-  // const specializationsParams = searchParams.get("specializations") || 11;
   const { data, isLoading, isError } = useGetSpecializationsQuery({ page: 1 });
   const {
     data: skillsArray,

@@ -15,7 +15,6 @@ interface Props {
 const TagList = ({ items, title, onChange }: Props) => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
-  console.log(selectedItems);
 
   const toggleItem = (id: number) => {
     setSelectedItems((prev) => {

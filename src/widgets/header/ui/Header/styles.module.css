@@ -41,3 +41,10 @@
     background: var(--Black-25, #f4f4f4);
   }
 }
+
+.auth{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:12px
+}

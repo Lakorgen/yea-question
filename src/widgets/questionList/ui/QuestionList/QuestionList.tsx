@@ -2,6 +2,7 @@ import { QuestionItem } from "@/entities/question";
 import styles from "./styles.module.css";
 import Pagination from "@/shared/ui/Pagination/Pagination";
 import { IQuestion, IQuestionResponse } from "@/entities/question/model/types";
+import Button from "@/shared/ui/Button/Button";
 
 interface Props {
   data: IQuestionResponse;
@@ -46,11 +47,11 @@ const QuestionList = ({
       ) : (
         <div>
           По данным фильтрам вопросов нет
-          <button
+          <Button
             onClick={() => (window.location.href = window.location.pathname)}
           >
             Сбросить
-          </button>
+          </Button>
         </div>
       )}
     </div>

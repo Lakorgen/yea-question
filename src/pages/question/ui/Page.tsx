@@ -6,7 +6,6 @@ import ArrowLeftSvg from "@/shared/assets/ArrowLeftSvg";
 const Page = () => {
   const { id } = useParams();
   const { data, isLoading, isError } = useGetQuestionByIdQuery(id || 1);
-  console.log(data);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError && !data) return <div>Error...</div>;

@@ -1,0 +1,37 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 12px 20px;
+}
+
+.outline {
+  background: transparent;
+  border: none;
+  color: var(--Purple-700, #6a0bff);
+}
+
+.filled {
+  background: var(--Purple-700, #6a0bff);
+  border: 1px solid var(--Purple-700);
+  color: var(--White-900, #fff);
+}
+
+.L {
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.M {
+  /* 16/SB */
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 17.6px */
+}
