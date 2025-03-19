@@ -11,10 +11,17 @@ export const questionApi = createApi({
   endpoints: (builder) => ({
     getQuestion: builder.query<IQuestionResponse, ParamsType>({
       query: (params) => {
-        const { page = 1, keywords } = params || {};
+        const {
+          page = 1,
+          keywords,
+          specialization,
+          skills,
+          complexity,
+          rate,
+        } = params || {};
         return {
           url: "questions/public-questions",
-          params: { page, keywords },
+          params: { page, keywords, specialization, skills, complexity, rate },
         };
       },
     }),

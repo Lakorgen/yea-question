@@ -52,4 +52,8 @@ export interface IQuestionResponse {
 export interface ParamsType {
   page?: number;
   keywords?: string;
+  specialization?: string;
+  skills?: string;
+  complexity?: string;
+  rate?: string;
 }

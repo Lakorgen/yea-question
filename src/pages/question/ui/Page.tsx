@@ -53,7 +53,7 @@ const Page = () => {
             <p>Ключевые слова</p>
             <div>
               {data?.keywords.map((item) => (
-                <p>#{item}</p>
+                <p key={item}>#{item}</p>
               ))}
             </div>
           </div>

@@ -9,16 +9,23 @@ interface Item {
 interface Props {
   items: Item[];
   title: string;
+  onChange: (value: string) => void;
 }
 
-const TagList = ({ items, title }: Props) => {
+const TagList = ({ items, title, onChange }: Props) => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
+  console.log(selectedItems);
 
   const toggleItem = (id: number) => {
-    setSelectedItems((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
-    );
+    setSelectedItems((prev) => {
+      const newSelected = prev.includes(id)
+        ? prev.filter((i) => i !== id)
+        : [...prev, id];
+
+      onChange(newSelected.join(","));
+      return newSelected;
+    });
   };
 
   return (

@@ -1,27 +1,58 @@
 import { QuestionItem } from "@/entities/question";
-import { useGetQuestionQuery } from "@/entities/question/api/questionApi";
 import styles from "./styles.module.css";
-// import Pagination from "@/shared/ui/Pagination/Pagination";
+import Pagination from "@/shared/ui/Pagination/Pagination";
+import { IQuestion, IQuestionResponse } from "@/entities/question/model/types";
 
-const QuestionList = () => {
-  const { data, isLoading, isError } = useGetQuestionQuery({ page: 2 });
+interface Props {
+  data: IQuestionResponse;
+  questions: IQuestion[];
+  handlePageClick: (page: number) => void;
+  handlePrevPage: () => void;
+  handleNextPage: () => void;
+  isLoading: boolean;
+  isError: boolean;
+}
 
-
-
+const QuestionList = ({
+  data,
+  questions,
+  handlePageClick,
+  handlePrevPage,
+  handleNextPage,
+  isLoading,
+  isError,
+}: Props) => {
   if (isLoading) return <div>Loading...</div>;
-  if (isError && !data) return <div>Error...</div>;
-  console.log(data?.page);
+  if (isError) return <div>Error...</div>;
 
   return (
     <div className={styles.questionWrapper}>
       <h2 className={styles.title}>Вопросы</h2>
-      <ul className={styles.list}>
-        {data?.data.map((item) => (
-          <QuestionItem key={item.id} question={item} />
-        ))}
-      </ul>
-      {/* <Pagination totalPages={data?.total} currentPage={data?.page} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} 
-      handlePageClick={handlePageClick} /> */}
+      {questions.length > 0 ? (
+        <>
+          <ul className={styles.list}>
+            {questions.map((item) => (
+              <QuestionItem key={item.id} question={item} />
+            ))}
+          </ul>
+          <Pagination
+            totalPages={Math.ceil(data?.total / 10)}
+            currentPage={data?.page}
+            handleNextPage={handleNextPage}
+            handlePrevPage={handlePrevPage}
+            handlePageClick={handlePageClick}
+          />
+        </>
+      ) : (
+        <div>
+          По данным фильтрам вопросов нет
+          <button
+            onClick={() => (window.location.href = window.location.pathname)}
+          >
+            Сбросить
+          </button>
+        </div>
+      )}
     </div>
   );
 };
