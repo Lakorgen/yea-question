@@ -5,9 +5,7 @@ import TagList from "@/shared/ui/TagList/TagList";
 import { useGetSpecializationsQuery } from "@/entities/specializations/api/specializationsApi";
 import { ISpecialization } from "@/shared/interfaces";
 import { useGetSkillsQuery } from "@/entities/skills/api/skillsApi";
-import { useSearchParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "@/app/appStore";
-import { useEffect } from "react";
 import {
   setComplexity,
   setKeywords,
@@ -15,49 +13,15 @@ import {
   setSkills,
   setSpecialization,
 } from "@/entities/filters/api/filtersSlice";
+import { useSyncFiltersWithURL } from "@/features/filters";
 
 const FiltersList = () => {
   const dispatch = useAppDispatch();
-  const { keywords, specialization, skills, complexity, rate } = useAppSelector(
-    (state) => state.filters
+  const specialization = useAppSelector(
+    (state) => state.filters.specialization
   );
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    const urlKeywords = searchParams.get("keywords") || "";
-    const urlSpecialization = searchParams.get("specialization") || "";
-    const urlSkills = searchParams.get("skills") || "";
-    const urlComplexity = searchParams.get("complexity") || "";
-    const urlRating = searchParams.get("rating") || "";
-
-    if (urlKeywords !== keywords) {
-      dispatch(setKeywords(urlKeywords));
-    }
-    if (urlSpecialization !== specialization) {
-      dispatch(setSpecialization(urlSpecialization));
-    }
-    if (urlSkills) {
-      dispatch(setSkills(urlSkills.split(",")));
-    }
-    if (urlComplexity) {
-      dispatch(setComplexity(urlComplexity));
-    }
-    if (urlRating) {
-      dispatch(setRating(urlRating.split(",")));
-    }
-  }, [searchParams]);
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (keywords) params.set("keywords", keywords);
-    if (specialization) params.set("specialization", specialization);
-    if (skills.length > 0) params.set("skills", skills.join(","));
-    if (complexity) params.set("complexity", complexity.toString());
-    if (rate) params.set("rating", rate.join(","));
-    if (params.toString() !== searchParams.toString()) {
-      setSearchParams(params);
-    }
-  }, [keywords, specialization, skills, complexity, rate, setSearchParams]);
+  useSyncFiltersWithURL();
 
   const { data, isLoading, isError } = useGetSpecializationsQuery({ page: 1 });
   const {

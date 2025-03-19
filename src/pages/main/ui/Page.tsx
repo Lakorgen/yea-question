@@ -1,27 +1,15 @@
 import { QuestionList } from "@/widgets/questionList";
 import styles from "./styles.module.css";
 import { FiltersList } from "@/widgets/filtersList";
-import { useGetQuestionQuery } from "@/entities/question/api/questionApi";
 import { useAppDispatch, useAppSelector } from "@/app/appStore";
 import { setPage } from "@/entities/filters/api/filtersSlice";
+import { useQuestions } from "@/entities/question";
+
 
 const Page = () => {
   const dispatch = useAppDispatch();
-  const { page, keywords, specialization, skills, complexity, rate } =
-    useAppSelector((state) => state.filters);
-
-  const { data, isLoading, isError } = useGetQuestionQuery({
-    page,
-    keywords: keywords !== "" ? keywords : undefined,
-    specialization: specialization !== "" ? specialization : undefined,
-    skills: skills.join(",") ? skills.join(",") : undefined,
-    complexity: complexity !== null ? complexity : undefined,
-    rate: rate?.join(",") ? rate.join(",") : undefined,
-  });
-
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const page = parseInt(searchParams.get("page") || "1");
-  // const keywords = searchParams.get("keywords") || "";
+  const { data, isLoading, isError } = useQuestions();
+  const { page } = useAppSelector((state) => state.filters);
 
   const handlePageClick = (newPage: number) => {
     dispatch(setPage(newPage));
@@ -38,6 +26,7 @@ const Page = () => {
       dispatch(setPage(page + 1));
     }
   };
+
   return (
     <div className={styles.main__inner}>
       {data?.data && (
