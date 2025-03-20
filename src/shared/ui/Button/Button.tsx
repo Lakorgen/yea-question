@@ -7,9 +7,17 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-const Button = ({ children, variant = "filled", size = "M" }: Props) => {
+const Button = ({
+  children,
+  variant = "filled",
+  size = "M",
+  onClick,
+}: Props) => {
   return (
-    <button className={`${styles.btn} ${styles[variant]} ${styles[size]}`}>
+    <button
+      className={`${styles.btn} ${styles[variant]} ${styles[size]}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
