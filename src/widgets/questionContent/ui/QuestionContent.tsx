@@ -1,5 +1,6 @@
 import { IQuestion } from "@/entities/question/model/types";
 import styles from "./styles.module.css";
+import { Card } from "@/shared/ui/Card/Card";
 
 const QuestionContent = ({
   title,
@@ -9,18 +10,18 @@ const QuestionContent = ({
 }: Partial<IQuestion>) => {
   return (
     <div className={styles.answer}>
-      <div className={styles.head}>
-        <h2 className={styles.title}>{title}</h2>
+      <Card className={styles.head}>
+        <h3 className={styles.title}>{title}</h3>
         <p>{description}</p>
-      </div>
-      <div className={styles.short__answer}>
+      </Card>
+      <Card className={styles.short__answer}>
         <h3>Короткий ответ</h3>
         <p dangerouslySetInnerHTML={{ __html: shortAnswer || "" }}></p>
-      </div>
-      <div className={styles.long__answer}>
+      </Card>
+      <Card className={styles.long__answer}>
         <h3>Развёрнутый ответ</h3>
         <p dangerouslySetInnerHTML={{ __html: longAnswer || "" }}></p>
-      </div>
+      </Card>
     </div>
   );
 };

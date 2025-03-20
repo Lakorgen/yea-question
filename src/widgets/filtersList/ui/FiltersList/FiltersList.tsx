@@ -14,6 +14,7 @@ import {
   setSpecialization,
 } from "@/entities/filters/api/filtersSlice";
 import { useSyncFiltersWithURL } from "@/features/filters";
+import { Card } from "@/shared/ui/Card/Card";
 
 const FiltersList = () => {
   const dispatch = useAppDispatch();
@@ -69,7 +70,7 @@ const FiltersList = () => {
     })) || [];
 
   return (
-    <div className={styles.list}>
+    <Card className={styles.list}>
       <Search onSearch={handleSearch}>
         <SearchSvg />
       </Search>
@@ -104,7 +105,7 @@ const FiltersList = () => {
         ]}
         onChange={(value) => handleFilterChange("rating", value)}
       />
-    </div>
+    </Card>
   );
 };
 

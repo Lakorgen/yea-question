@@ -2,6 +2,7 @@ import { IQuestion } from "@/entities/question/model/types";
 import styles from "./styles.module.css";
 import { QuestionSkills } from "./QuestionSkills";
 import { QuestionKeywords } from "./QuestionKeywords";
+import { Card } from "@/shared/ui/Card/Card";
 
 const QuestionInfo = ({
   rate,
@@ -10,7 +11,7 @@ const QuestionInfo = ({
   keywords,
 }: Partial<IQuestion>) => {
   return (
-    <div className={styles.info}>
+    <Card className={styles.info}>
       <div className={styles.lvl}>
         <div className={styles.lvl__item}>
           <p>Рейтинг</p>
@@ -23,7 +24,7 @@ const QuestionInfo = ({
       </div>
       <QuestionSkills questionSkills={questionSkills} />
       <QuestionKeywords keywords={keywords} />
-    </div>
+    </Card>
   );
 };
 

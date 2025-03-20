@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import Pagination from "@/shared/ui/Pagination/Pagination";
 import { IQuestion, IQuestionResponse } from "@/entities/question/model/types";
 import Button from "@/shared/ui/Button/Button";
+import { Card } from "@/shared/ui/Card/Card";
 
 interface Props {
   data: IQuestionResponse;
@@ -27,7 +28,7 @@ const QuestionList = ({
   if (isError) return <div>Error...</div>;
 
   return (
-    <div className={styles.questionWrapper}>
+    <Card className={styles.questionWrapper}>
       <h2 className={styles.title}>Вопросы</h2>
       {questions.length > 0 ? (
         <>
@@ -54,7 +55,7 @@ const QuestionList = ({
           </Button>
         </div>
       )}
-    </div>
+    </Card>
   );
 };
 

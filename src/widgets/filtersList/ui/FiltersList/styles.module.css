@@ -1,12 +1,4 @@
 .list {
-  display: flex;
   width: 344px;
   flex-shrink: 0;
-  padding: 24px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  border-radius: 24px;
-  background-color: var(--White-900);
-  box-shadow: 0px 4px 10px 0px rgba(106, 99, 118, 0.1);
 }
