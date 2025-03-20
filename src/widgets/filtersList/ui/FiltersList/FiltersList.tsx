@@ -15,6 +15,7 @@ import {
 } from "@/entities/filters/api/filtersSlice";
 import { useSyncFiltersWithURL } from "@/features/filters";
 import { Card } from "@/shared/ui/Card/Card";
+import Skeleton from "@/shared/ui/Skeleton/Skeleton";
 
 const FiltersList = () => {
   const dispatch = useAppDispatch();
@@ -54,7 +55,16 @@ const FiltersList = () => {
     }
   };
 
-  if (isLoading || skillsIsLoading) return <div>Loading...</div>;
+  if (isLoading || skillsIsLoading) {
+    return (
+      <Card className={styles.list}>
+        <Skeleton width="100%" height="40px" /> {/* Поле поиска */}
+        <Skeleton width="100%" height="60px" /> {/* Список фильтров */}
+        <Skeleton width="100%" height="60px" />
+        <Skeleton width="100%" height="60px" />
+      </Card>
+    );
+  }
   if (isError || skillsIsError) return <div>Error...</div>;
 
   const specializations =

@@ -11,6 +11,10 @@
   gap: 20px;
 }
 
+.skeleton {
+  min-width: 100%;
+}
+
 .back {
   color: var(--Purple-700, #6a0bff);
   font-feature-settings: "ss01" on, "cv01" on, "cv11" on;

@@ -4,7 +4,8 @@ import { FiltersList } from "@/widgets/filtersList";
 import { useAppDispatch, useAppSelector } from "@/app/appStore";
 import { setPage } from "@/entities/filters/api/filtersSlice";
 import { useQuestions } from "@/entities/question";
-
+import { Card } from "@/shared/ui/Card/Card";
+import Skeleton from "@/shared/ui/Skeleton/Skeleton";
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,17 @@ const Page = () => {
       dispatch(setPage(page + 1));
     }
   };
+  if (isLoading) {
+    return (
+      <div className={styles.main__inner}>
+        <Card className={styles.card}>
+          <Skeleton width="100%" height="40px" /> {/* Заголовок */}
+          <Skeleton width="100%" height="600px" /> {/* Список вопросов */}
+          <Skeleton width="100px" height="40px" /> {/* Кнопки */}
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.main__inner}>

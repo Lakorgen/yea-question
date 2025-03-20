@@ -21,12 +21,7 @@ const QuestionList = ({
   handlePageClick,
   handlePrevPage,
   handleNextPage,
-  isLoading,
-  isError,
 }: Props) => {
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error...</div>;
-
   return (
     <Card className={styles.questionWrapper}>
       <h2 className={styles.title}>Вопросы</h2>
