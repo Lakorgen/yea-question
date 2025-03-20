@@ -1,3 +1,3 @@
 import QuestionPage from "./ui/Page";
 
-export { QuestionPage };
+export default QuestionPage;

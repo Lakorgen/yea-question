@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import BaseLayout from "./layouts/BaseLayout";
 import { MainPage } from "@/pages/main";
-import { QuestionPage } from "@/pages/question";
+import { lazy, Suspense } from "react";
+
+const QuestionPage = lazy(() => import("@/pages/question"));
 
 export const appRouter = createBrowserRouter([
   {
@@ -13,7 +15,11 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/question/:id",
-        element: <QuestionPage />,
+        element: (
+          <Suspense fallback={<div>Загрузка...</div>}>
+            <QuestionPage />
+          </Suspense>
+        ),
       },
       {
         path: "*",
